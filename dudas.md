@@ -6,3 +6,5 @@
   para el componente que lo invoca o para el 'contenedor' que invoca al componente.
 
 3. si en lugar de que glowEffectOn de Light sea una const quiero que sea un función, ¿cómo lo hago?
+
+4. Debería haber puesto la lógica del color en el <Home /> en lugar de en el <Light />

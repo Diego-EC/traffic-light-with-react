@@ -8,40 +8,19 @@ import {
 
 export function Light(props) {
 	Light.propTypes = {
-		color: PropTypes.string,
+		lightColor: PropTypes.string,
 		selectLight: PropTypes.func,
 		selected: PropTypes.bool
 	};
-	const bgColorClass = selectBgColorClass(props.color);
-	let lightSelected = " ";
+	const bgColorClass = selectBgColorClass(props.lightColor);
 
-	const lightSelectedOn = color => {
-		console.log("lightSelectedOn");
-		//lightSelected = " light-selected ";
-		props.selectLight(props.color);
+	const selectLight = lightColor => {
+		props.selectLight(props.lightColor);
 	};
 
-	const [cucu, setCucu] = useState(false);
-
-	/*function lightSelectedOn(color) {
-		switch (color) {
-			case FIRST_LIGHT_COLOR:
-				setColor();
-				break;
-
-			case SECOND_LIGHT_COLOR:
-				break;
-			case THIRD_LIGHT_COLOR:
-				break;
-		}
-	}*/
-
-	//const [color, setColor] = useState("  ");
-	let color = "";
+	let selectedLightClass = "";
 	if (props.selected == true) {
-		color = " light-selected ";
-	} else {
-		color = " lol ";
+		selectedLightClass = " light-selected ";
 	}
 
 	function selectBgColorClass(colorToEvaluate) {
@@ -49,15 +28,12 @@ export function Light(props) {
 		switch (colorToEvaluate) {
 			case FIRST_LIGHT_COLOR:
 				selectedBgColorClass = "bg-danger";
-				//lightSelected = " light-selected ";
 				break;
 			case SECOND_LIGHT_COLOR:
 				selectedBgColorClass = "bg-warning";
-				//lightSelected = " light-selected ";
 				break;
 			case THIRD_LIGHT_COLOR:
 				selectedBgColorClass = "bg-success";
-				//lightSelected = " light-selected ";
 				break;
 		}
 		return selectedBgColorClass;
@@ -67,9 +43,11 @@ export function Light(props) {
 		<div className="">
 			<div
 				className={
-					bgColorClass + color + " rounded-circle light  my-4 "
+					bgColorClass +
+					selectedLightClass +
+					" rounded-circle light  my-4 "
 				}
-				onClick={lightSelectedOn}
+				onClick={selectLight}
 			/>
 		</div>
 	);

@@ -11,22 +11,12 @@
 }
 
 .light-selected{
-  /*width: 50px;
-  height: 50px;
-  margin: auto;
-  border-radius: 50%;
-  padding: 4px;*/
-  box-shadow: #f8ffcc 0px 0px 50px 20px;
-  /*&.red { background-color: #990000;}
-  &.yellow {background-color: #CC6600; }
-  &.green { background-color: #009933; }
-  &.selected{box-shadow: #f8ffcc 0px 0px 50px 20px;}*/
+  box-shadow: #fffecc 0px 0px 20px 30px;
 }
 
 .light {
     width: 100px;
     height: 100px;
-    /*background-color: red;*/
     margin: auto; /* se autocentra dentro del padre */
     cursor: pointer;
 }

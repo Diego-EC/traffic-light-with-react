@@ -8,51 +8,39 @@ import {
 
 // core component
 export function Home() {
-	const [colorSelected, setColor] = useState("");
+	const [selectedLight, setSelectedLight] = useState("");
 
-	const selectLight = color => {
-		console.log("selectLight");
-		console.log(color);
-		setColor(color);
-
-		/*switch (color) {
-			case FIRST_LIGHT_COLOR:
-				selectedBgColorClass = "bg-danger";
-				//lightSelected = " light-selected ";
-				break;
-			case SECOND_LIGHT_COLOR:
-				selectedBgColorClass = "bg-warning";
-				//lightSelected = " light-selected ";
-				break;
-			case THIRD_LIGHT_COLOR:
-				selectedBgColorClass = "bg-success";
-				//lightSelected = " light-selected ";
-				break;
-		}*/
+	const selectLight = lightColor => {
+		setSelectedLight(lightColor);
 	};
-	let selected = false;
-	const lights = [FIRST_LIGHT_COLOR, SECOND_LIGHT_COLOR, THIRD_LIGHT_COLOR];
 
-	let lightsMap = lights.map((light, index) => {
-		if (colorSelected == light) {
-			selected = true;
+	let isSelected = false;
+	const lightsColors = [
+		FIRST_LIGHT_COLOR,
+		SECOND_LIGHT_COLOR,
+		THIRD_LIGHT_COLOR
+	];
+
+	let lightsColorsMap = lightsColors.map((lightColor, index) => {
+		if (lightColor == selectedLight) {
+			isSelected = true;
 		} else {
-			selected = false;
+			isSelected = false;
 		}
 
 		return (
 			<Light
 				key={index}
-				color={light}
+				lightColor={lightColor}
 				selectLight={selectLight}
-				selected={selected}
+				selected={isSelected}
 			/>
 		);
 	});
 
 	return (
 		<div className="centered-on-window">
-			<div>{lightsMap}</div>
+			<div>{lightsColorsMap}</div>
 		</div>
 	);
 }
