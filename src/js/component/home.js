@@ -1,24 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import { Light } from "./light.js";
+import {
+	FIRST_LIGHT_COLOR,
+	SECOND_LIGHT_COLOR,
+	THIRD_LIGHT_COLOR
+} from "./../constants.js";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
+// core component
 export function Home() {
+	const [colorSelected, setColor] = useState("");
+
+	const selectLight = color => {
+		console.log("selectLight");
+		console.log(color);
+		setColor(color);
+
+		/*switch (color) {
+			case FIRST_LIGHT_COLOR:
+				selectedBgColorClass = "bg-danger";
+				//lightSelected = " light-selected ";
+				break;
+			case SECOND_LIGHT_COLOR:
+				selectedBgColorClass = "bg-warning";
+				//lightSelected = " light-selected ";
+				break;
+			case THIRD_LIGHT_COLOR:
+				selectedBgColorClass = "bg-success";
+				//lightSelected = " light-selected ";
+				break;
+		}*/
+	};
+	let selected = false;
+	const lights = [FIRST_LIGHT_COLOR, SECOND_LIGHT_COLOR, THIRD_LIGHT_COLOR];
+
+	let lightsMap = lights.map((light, index) => {
+		if (colorSelected == light) {
+			selected = true;
+		} else {
+			selected = false;
+		}
+
+		return (
+			<Light
+				key={index}
+				color={light}
+				selectLight={selectLight}
+				selected={selected}
+			/>
+		);
+	});
+
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="centered-on-window">
+			<div>{lightsMap}</div>
 		</div>
 	);
 }
