@@ -17,6 +17,9 @@ export function Light(props) {
 	const selectLight = lightColor => {
 		props.selectLight(props.lightColor);
 	};
+	/*function selectLight(lightColor) {
+		props.selectLight(props.lightColor);
+	}*/
 
 	let selectedLightClass = "";
 	if (props.selected == true) {
